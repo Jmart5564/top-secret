@@ -19,5 +19,5 @@ CREATE TABLE secrets (
 );
 
 INSERT INTO secrets (title, description ) VALUES
-('Birds', 'Birds are actually drones')
-('Lich Lord', 'Reagan lives in a catacomb under the Whitehouse, keeping himself alive by sucking out the souls of the poor')
+('Birds', 'Birds are actually drones'),
+('Lich Lord', 'Reagan lives in a catacomb under the Whitehouse, keeping himself alive by sucking out the souls of the poor');
