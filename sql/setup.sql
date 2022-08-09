@@ -18,3 +18,6 @@ CREATE TABLE secrets (
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
+INSERT INTO secrets (title, description ) VALUES
+('Birds', 'Birds are actually drones')
+('Lich Lord', 'Reagan lives in a catacomb under the Whitehouse, keeping himself alive by sucking out the souls of the poor')
