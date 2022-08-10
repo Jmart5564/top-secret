@@ -34,6 +34,20 @@ describe('authentication and authorization routes', () => {
       created_at: expect.any(String)
     });
   });
+  it('should add a new secret if user is logged in', async () => {
+    const [agent] = await registerAndLogin();
+    const newSecret = {
+      title: 'Cats',
+      description: 'Cats are also spy drones'
+    };
+    const res = await agent.post('/api/v1/secrets').send(newSecret);
+    expect(res.status).toBe(200);
+    expect(res.body).toEqual({
+      id: expect.any(String),
+      created_at: expect.any(String),
+      ...newSecret
+    });
+  });
   afterAll(() => {
     pool.end();
   });
