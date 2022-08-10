@@ -42,6 +42,13 @@ describe('authentication and authorization routes', () => {
     const res = await request(app).post('/api/v1/users/sessions').send({ email: 'Momo@defense.gov', password: 'meow' });
     expect(res.status).toBe(200);
   });
+
+  it('DELETE should log a user out', async () => {
+    const [agent] = await registerAndLogin();
+    const res = await agent.delete('/api/v1/users/sessions');
+    expect(res.status).toBe(204);
+  });
+  
   afterAll(() => {
     pool.end();
   });
