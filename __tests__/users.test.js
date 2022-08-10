@@ -14,7 +14,7 @@ describe('authentication and authorization routes', () => {
   beforeEach(() => {
     return setup(pool);
   });
-  it('should create a new user', async () => {
+  it('POST /api/v1/users should create a new user', async () => {
     const res = await request(app).post('/api/v1/users').send(fakeUser);
     const { firstName, lastName, email } = fakeUser;
 
@@ -25,6 +25,13 @@ describe('authentication and authorization routes', () => {
       lastName,
       email
     });
+  });
+
+  it('POST /api/v1/users/sessions should log a user in', async () => {
+    await request(app).post('/api/v1/users').send(fakeUser);
+    const res = await request(app).post('/api/v1/users/session').send(fakeUser);
+    expect(res.status).toBe(200);
+    expect(res.body.message).toEqual('Signed in successfully!');
   });
   afterAll(() => {
     pool.end();
